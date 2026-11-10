@@ -8,20 +8,30 @@
     <link href="./css/musicplayer.css" rel="stylesheet" />
     <link href="./css/header.css" rel="stylesheet" />
     <link href="./css/sidebar.css" rel="stylesheet" />
+    <link href="./css/footer.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
     <script src="./js/songs.js" defer></script>
     <script src="./js/app.js" defer></script>
     <title>Audivio</title>
   </head>
   <body>
-    <header></header>
+    <header>
+      <h1 class="header-title">Audivio</h1>
+      <div class="header__content"></div>
+      <div class="header__content"></div>
+    </header>
     <main>
       <div class="sidebar">
         <div class="searchbar">
           <label for="searchInput">Search for a song:</label>
-          <input type="text" name="searchInput" />
+          <input type="text" name="searchInput" id="searchInput" />
           <button>Search</button>
         </div>
+        <div class="playlists">
+          <h2>My Playlists</h2>
+        </div>
+      </div>
+      <div class="main">
         <div class="content-wrapper">
           <div class="content"></div>
         </div>
