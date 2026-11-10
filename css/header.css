@@ -15,4 +15,6 @@ header {
 .header-title {
   height: auto;
   width: auto;
+  margin-right: auto;
+  padding: 2rem;
 }
