@@ -2,8 +2,8 @@ const listSongs = document.querySelector(".grid-container");
 const searchInput = document.querySelector("#searchInput");
 const searchButton = document.querySelector("#searchButton");
 // Populates the grid-container with songs from passed array
-function populateListWithSongs(songList) {
-    if (songList === undefined || songList.length == 0) {
+function populateListWithSongs(array) {
+    if (array === undefined || array.length == 0) {
         return console.log("No array provided");
     } else {
         // takes the number from duration value and formats it into minutes and seconds
@@ -19,18 +19,18 @@ function populateListWithSongs(songList) {
             }
         }
         // Populating loop
-        for (let i = 0; i < songList.length; i++) {
+        for (let i = 0; i < array.length; i++) {
             // creates a "main" div to act as rows
             const song = document.createElement("div");
             // appends the rest of the divs to song as inner divs, to act as columns
             const title = document.createElement("div");
-            title.textContent = songList[i].title;
+            title.textContent = array[i].title;
             const artist = document.createElement("div");
-            artist.textContent = songList[i].artist;
+            artist.textContent = array[i].artist;
             const genre = document.createElement("div");
-            genre.textContent = songList[i].genre;
+            genre.textContent = array[i].genre;
             const duration = document.createElement("div");
-            const formattedDuration = numberToMinutesSeconds(songList[i].duration);
+            const formattedDuration = numberToMinutesSeconds(array[i].duration);
             duration.textContent = formattedDuration;
             song.append(title, artist, genre, formattedDuration);
             song.classList.add("track");
@@ -39,16 +39,20 @@ function populateListWithSongs(songList) {
     }
 }
 
-populateListWithSongs(songs);
+// populateListWithSongs(songs);
 
-searchButton.addEventListener("click", (e) => {
-    console.clear;
-    searchString = searchInput.value;
-    
-    if (searchString == "") {
-        return console.log("No search string");
-    } else {
-        console.log(searchString);
-        songs.
+searchInput.addEventListener("keydown", search);
+searchButton.addEventListener("click", search);
+
+function search(e) {
+    if (searchInput.value == "") {
+        return console.log(`No search term provided`);
+    } else if (e.type === "click" || (e.type === "keydown" && e.key === "Enter")) {
+        searchTerm = searchInput.value;
+        console.log(searchTerm);
+        // Stores the returned array after applying the searchTerm to filter(), which should be the matching results
+        const searchResults = songs.filter((song) => song.title.toLowerCase().includes(searchTerm));
+        console.log(searchResults);
+        populateListWithSongs(searchResults);
     }
-});
+}
