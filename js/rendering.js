@@ -39,7 +39,7 @@ function showNoResults() {
     clearRenderer();
     const noResultsElement = document.createElement("p");
     noResultsElement.classList.add("no-results");
-    noResultsElement.textContent = "No results with that information or search was empty";
+    noResultsElement.textContent = "No results";
     resultsContainer.append(noResultsElement);
     return;
 }
@@ -53,7 +53,7 @@ function clearRenderer() {
     }
     if (renderedResults.length > 0) {
         console.log(renderedResults);
-        console.log("Removing rendered results");
+        console.log("Rendering results in results-container");
         renderedResults.forEach((item) => {
             item.remove();
         });

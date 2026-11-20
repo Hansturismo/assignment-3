@@ -1,0 +1,47 @@
+.playlists {
+    display: flex;
+    flex: 0 1 auto;
+    padding: 1rem 0.4rem;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.playlists-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.playlists-title button {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.playlists-list {
+    display: grid;
+    grid-template-rows: repeat(auto, 100px);
+    grid-gap: 0.6rem;
+    border: 1px solid rgb(59, 94, 94);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+}
+.no-playlists {
+    display: none;
+}
+.no-playlists--show {
+    display: block;
+}
+
+.playlists--hide {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    .playlists {
+        display: none;
+    }
+}

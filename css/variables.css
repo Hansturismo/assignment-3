@@ -1,6 +1,20 @@
 * {
   --margin-sections: 0.3rem;
-  --body-bg: black;
-  --header-bg: darkslateblue;
+  /* Font colors */
   --font-color: whitesmoke;
+  /* Background colors */
+  --body-bg-color: rgb(40, 40, 40);
+  --header-bg-color: darkslateblue;
+  --footer-bg-color: darkslateblue;
+  --content-bg-color: darkslategray;
+  --sidebar-bg-color: darkslategray;
+  /* Border colors */
+  --content-border-color: gray;
+  /* Content colors */
+  --track-color-dark: rgb(40, 40, 40);
+  --track-color-light: rgb(50, 50, 50);
+
+
+  /* Sizes */
+  --font-size-large: 1.5rem
 }

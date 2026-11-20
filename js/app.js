@@ -1,14 +1,22 @@
 const searchInput = document.querySelector("#searchInput");
-const searchButton = document.querySelector("#searchButton");
+const searchInputMobile = document.querySelector("#searchInputMobile");
 const sortByTitle = document.querySelector("#sortByTitle");
 const sortByArtist = document.querySelector("#sortByArtist");
 const sortByGenre = document.querySelector("#sortByGenre");
 
-const searchPromptButton = document.querySelector("#searchPromptButton");
+const searchPromptButton = document.querySelector("#openSearchPromptButton");
 
-searchInput.addEventListener("keyup", search);
-searchButton.addEventListener("click", search);
-sortByGenre.addEventListener("click", sortResultsByGenre);
+// Search input on desktop
+searchInput.addEventListener("input", search);
+
+// Opens the search input on mobile
 searchPromptButton.addEventListener("click", showSearchbarMobile);
+// Search input on mobile
+searchInputMobile.addEventListener("input", searchMobile);
+
+// Sorting on desktop
+// sortByTitle.addEventListener("click", sortResultsByTitle);
+// sortByArtist.addEventListener("click", sortResultsByArtist);
+sortByGenre.addEventListener("click", sortResultsByGenre);
 
 renderSearchResults(songs);
