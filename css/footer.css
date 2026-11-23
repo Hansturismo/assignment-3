@@ -9,34 +9,11 @@ footer {
     border-top: 1px solid black;
     color: var(--font-color);
     margin-top: var(--margin-sections);
+    z-index: 6;
 }
-
-#openPlaylistsButton,
-#openSearchPromptButton {
-    display: none;
-    width: 100px;
-    font-size: large;
-    height: 40px;
-    border-radius: 2rem;
-    border: solid white 2px;
-}
-
-#openPlaylistsButton:active,
-#openSearchPromptButton:active {
-    background-color: lightgray;
-}
-
 
 @media (max-width: 800px) {
     footer {
         display: flex;
     }
-
-
-    #openPlaylistsButton,
-    #openSearchPromptButton {
-        display: block;
-    }
-
-    
 }

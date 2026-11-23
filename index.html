@@ -30,55 +30,57 @@
         <main>
             <div class="sidebar">
                 <div class="searchbar">
-                    <label for="searchInput">Search for a song</label>
+                    <label for="searchInputDesktop">Search for a song</label>
                     <input
                         type="text"
-                        name="searchInput"
-                        id="searchInput"
+                        name="searchInputDesktop"
+                        id="searchInputDesktop"
                         placeholder="Search for title, artist, genre..."
                     />
-                    <!-- Switch out for a search/magnyfying glass icon -->
-                    <button id="searchButton">Search</button>
                 </div>
                 <div class="sidebar__divider"></div>
-                <div class="playlists">
+                <!-- Playlists for desktop -->
+                <div class="playlists" id="playlistDesktop">
                     <div class="playlists-title">
                         <h2>My Playlists</h2>
-                        <button title="Create playlist">+</button>
+                        <button title="Create playlist" id="createPlaylistButtonDesktop">+</button>
                         <p>Your created playlists are displayed here.</p>
                     </div>
                     <!-- Playlists populated by locally stored array -->
                     <div class="playlists-list">
-                        <div class="no-playlists no-playlists--show">No playlists to show</div>
                     </div>
                 </div>
+                <div class="playlists__creation playlists--hide" id="createPlaylistDesktop"></div>
             </div>
-            <div class="content-wrapper">
-                <!-- Area for selected song/playlist? -->
-                <div class="content-selected"></div>
-                <div class="results-wrapper">
-                    <div class="results__grid-head">
+            <div class="content">
+                <div class="content__results">
+                    <div class="content__results-header">
                         <!-- Buttons to sort results and to act as a table head -->
                         <button id="sortByTitle" title="Click to sort">Title</button>
                         <button id="sortByArtist" title="Click to sort">Artist</button>
                         <button id="sortByGenre" title="Click to sort">Genre</button>
                         <button id="sortByDuration">Duration</button>
                     </div>
-                    <div class="results-container"></div>
+                    <div class="content__results-container"></div>
                 </div>
-                <div class="playlists playlists--hide">
+                <!-- Playlists for mobile -->
+                <div class="playlists playlists--hide" id="playlistsMobile">
                     <div class="playlists-title">
                         <h2>My Playlists</h2>
-                        <button title="Create playlist">+</button>
+                        <button title="Create playlist" id="createPlaylistButtonMobile">+</button>
                         <p>Your created playlists are displayed here.</p>
                     </div>
                     <!-- Playlists populated by locally stored array -->
                     <div class="playlists-list">
-                        <div class="no-playlists no-playlists--show">No playlists to show</div>
                     </div>
                 </div>
+                <div class="playlists__creation playlists--hide" id="createPlaylistMobile">
+                    <form id="playlistCreationForm">
+                        <label for="playlistName">Playlist name</label>
+                        <input type="text" name="playlistName" id="playlistName"/>
+                    </form>
+                </div>
                 <div class="searchbar searchbar--hide" id="searchMenuMobile">
-                    <label for="searchInputMobile">Search for a song</label>
                     <input
                         type="text"
                         name="searchInputMobile"

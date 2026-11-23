@@ -7,14 +7,14 @@ function search(e) {
         clearTimeout(timer);
         timer = setTimeout(function () {
             console.log(`Cleared timer with ID: ${timer}`);
-            // console.log(searchInput.value);
-            console.log(`Searching array with value: ${searchInput.value}`);
+            // console.log(searchInputDesktop.value);
+            console.log(`Searching array with value: ${searchInputDesktop.value}`);
             // Stores the returned array after applying the searchTerm to filter(), which should be the matching results
             const searchResults = songs.filter(
                 (song) =>
-                    song.title.toLowerCase().includes(searchInput.value.toLowerCase()) ||
-                    song.artist.toLowerCase().includes(searchInput.value.toLowerCase()) ||
-                    song.genre.toLowerCase().includes(searchInput.value.toLowerCase()),
+                    song.title.toLowerCase().includes(searchInputDesktop.value.toLowerCase()) ||
+                    song.artist.toLowerCase().includes(searchInputDesktop.value.toLowerCase()) ||
+                    song.genre.toLowerCase().includes(searchInputDesktop.value.toLowerCase()),
             );
             // If an array that is not empty is returned, it is rendered in the content area
             if (searchResults.length > 0) {
