@@ -8,7 +8,12 @@
     gap: 0.5rem;
     height: 15%;
     padding: 1rem 0.4rem;
-    font-size: large;
+    font-size: larger;
+}
+
+.searchbar > label {
+    font-weight: 600;
+    font-size: font-size: var(--font-size-medium);
 }
 
 #searchInputDesktop {
@@ -24,8 +29,11 @@
 }
 #searchInputDesktop::placeholder {
     color: var(--placeholder-font-color);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-);
     /* text-align: center; */
+}
+#searchInputDesktop:focus::placeholder {
+    opacity: 0;
 }
 
 /* Hide the mobile searchbar by default */
@@ -53,7 +61,12 @@
     opacity: 0;
 }
 
-#openPlaylistsButton,
+
+/* Makes sure search menu on mobile is removed from DOM on desktop */
+#searchMenuMobile {
+    display: none;
+}
+
 #openSearchPromptButton {
     display: none;
     width: 100px;
@@ -62,10 +75,6 @@
     border-radius: 2rem;
     border: solid white 2px;
     z-index: 6;
-}
-/* Makes sure search menu on mobile is removed from DOM on desktop */
-#searchMenuMobile {
-    display: none;
 }
 
 @media (max-width: 800px) {
@@ -93,6 +102,7 @@
 
     .searchbar--hide {
         transform: translateY(150%);
+        
     }
 
     .searchbar > label {
@@ -104,13 +114,8 @@
         padding: 0 1rem 0 1rem;
     }
 
-    #openPlaylistsButton,
     #openSearchPromptButton {
         display: block;
     }
-
-    #openPlaylistsButton:active,
-    #openSearchPromptButton:active {
-        background-color: lightgray;
-    }
+    
 }

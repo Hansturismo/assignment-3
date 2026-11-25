@@ -29,8 +29,16 @@ function renderSearchResults(array) {
         const duration = document.createElement("p");
         duration.classList.add("track__duration");
         duration.textContent = numberToMinutesSeconds(array[i].duration);
+        const addToPlaylist = document.createElement("button")
+        addToPlaylist.classList.add("track__button--add-to-playlist")
+        addToPlaylist.title = "Add to playlist..."
+        addToPlaylist.textContent = " + "
+        addToPlaylist.addEventListener("click", () => {
+            console.log(array[i]);
+            
+        })
         // Append the details to the song(div) element
-        song.append(title, artist, genre, duration);
+        song.append(title, artist, genre, duration, addToPlaylist);
         song.classList.add("track");
         // Appends the song(div) element to the resultsContainer element
         resultsContainer.append(song);
@@ -98,9 +106,8 @@ function showPlaylistsMobile() {
     playlistsMobile.classList.toggle("playlists--hide");
 }
 
-const playlistContainer = document.querySelectorAll(".playlists-list");
+const playlistContainer = document.querySelectorAll(".playlists__list");
 function renderPlaylists(array) {
-    console.log(array);
     clearPlaylists;
     if (array.length == 0) {
         playlistContainer.forEach((playlistNode) => {
@@ -134,3 +141,7 @@ function clearPlaylists() {
         noResults.remove();
     }
 }
+
+// function renderSelectedPlaylist() {
+
+// }

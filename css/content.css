@@ -31,18 +31,28 @@
 
 .content__results-header {
     display: grid;
-    grid-template-columns: repeat(2, minmax(100px, 1fr)) minmax(50px, 0.55fr) minmax(50px, 0.5fr);
+    grid-template-columns: repeat(2, minmax(100px, 1fr)) minmax(50px, 0.5fr) 50px 50px;
+    grid-template-rows: 2rem;
     border-bottom: 2px dashed gray;
-    padding: 1rem 1rem 0 1.5rem;
+    padding: 1rem 2rem;
+    max-height:;
 }
-.content__results-header button:last-child {
+.content__results-header button:nth-child(4) {
+    justify-self: center;
+    /* margin-right: 1.6rem; */
+}
+
+.track__button--add-to-playlist {
+    width: 1.5rem;
+    height: 1.5rem;
     justify-self: right;
-    margin-right: 1.6rem;
+    align-self: center;
+    margin-right: 1rem;
 }
 
 .track {
     display: grid;
-    grid-template-columns: repeat(2, minmax(100px, 1fr)) minmax(50px, 0.5fr) minmax(50px, 0.5fr);
+    grid-template-columns: repeat(2, minmax(100px, 1fr)) minmax(50px, 0.5fr) 50px 50px;
     border-radius: 2rem;
     background-color: var(--track-color-dark);
     font-size: var(--font-size-large);
@@ -60,28 +70,39 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .track p:last-child {
     justify-self: right;
+}
+
+.track__duration {
+    justify-self: center;
+}
+
+.track__duration--icon {
+    width: 100%;
+    height: 100%;
 }
 
 #sortByTitle,
 #sortByArtist,
 #sortByGenre {
     color: var(--font-color);
+    font-size: var(--font-size-large);
     background-color: transparent;
-    font-size: large;
     border: none;
     text-align: left;
-    max-width: 4rem;
+    max-width: 6rem;
 }
 
 #sortByDuration {
     color: var(--font-color);
+    font-size: var(--font-size-large);
     background-color: transparent;
-    font-size: large;
     border: none;
-    text-align: right;
-    max-width: 4rem;
+    text-align: center;
+    justify-self: center;
+    max-width: 6rem;
 }
 
 #sortByTitle:active,
@@ -89,12 +110,20 @@
 #sortByGenre:active {
     color: var(--font-color);
     background-color: transparent;
-    font-size: medium;
+    font-size: large;
     border: none;
 }
 
 .content__no-results {
     font-size: large;
+}
+@media (max-width: 1200px) {
+    .track__title,
+    .track__artist,
+    .track__genre,
+    .track__duration {
+        font-size: var(--font-size-medium);
+    }
 }
 
 @media (max-width: 800px) {
@@ -107,7 +136,7 @@
     }
     .content__results-header {
         display: grid;
-        grid-template-columns: minmax(100px, 1fr) minmax(50px, 0.4fr) minmax(50px, 0.3fr);
+        grid-template-columns: minmax(100px, 1fr) minmax(50px, 0.4fr) minmax(50px, 0.1fr) 50px;
     }
     .content__results-header button:nth-child(2) {
         display: none;
@@ -120,7 +149,7 @@
 
     .track {
         display: grid;
-        grid-template-columns: minmax(100px, 1fr) minmax(auto, 0.4fr) minmax(50px, 0.1fr);
+        grid-template-columns: minmax(100px, 1fr) minmax(auto, 0.4fr) minmax(50px, 0.1fr) 50px;
         font-size: var(--font-size-medium);
         margin-top: 1rem;
     }
@@ -147,7 +176,16 @@
         grid-row: span 2;
         align-self: center;
     }
+
+    .track__button--add-to-playlist {
+        grid-row: span 2;
+        align-self: center;
+    }
+
+    #sortByTitle,
+    #sortByArtist,
+    #sortByGenre,
+    #sortByDuration {
+        font-size: var(--font-size-medium);
+    }
 }
-/* .track p:nth-child(3) {
-        display: none;
-    } */

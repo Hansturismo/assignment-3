@@ -11,8 +11,6 @@ const sortByGenre = document.querySelector("#sortByGenre");
 
 // Search input on desktop
 searchInputDesktop.addEventListener("input", search);
-// Create playlist on desktop
-createPlaylistButtonDesktop.addEventListener("click", createPlaylist);
 
 // Mobile buttons
 const playlistsMobileButton = document.querySelector("#openPlaylistsButton");
@@ -34,3 +32,5 @@ playlistsMobileButton.addEventListener("click", showPlaylistsMobile);
 renderSearchResults(songs);
 
 renderPlaylists(playlistArray);
+
+// renderSelectedPlaylist()
