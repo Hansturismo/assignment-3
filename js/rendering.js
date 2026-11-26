@@ -29,14 +29,13 @@ function renderSearchResults(array) {
         const duration = document.createElement("p");
         duration.classList.add("track__duration");
         duration.textContent = numberToMinutesSeconds(array[i].duration);
-        const addToPlaylist = document.createElement("button")
-        addToPlaylist.classList.add("track__button--add-to-playlist")
-        addToPlaylist.title = "Add to playlist..."
-        addToPlaylist.textContent = " + "
+        const addToPlaylist = document.createElement("button");
+        addToPlaylist.classList.add("track__button--add-to-playlist");
+        addToPlaylist.title = "Add to playlist...";
+        addToPlaylist.textContent = " + ";
         addToPlaylist.addEventListener("click", () => {
             console.log(array[i]);
-            
-        })
+        });
         // Append the details to the song(div) element
         song.append(title, artist, genre, duration, addToPlaylist);
         song.classList.add("track");
@@ -44,10 +43,6 @@ function renderSearchResults(array) {
         resultsContainer.append(song);
     }
 }
-
-// function sortResultsByGenre() {
-//     console.log(`Sorted results by genre`);
-// }
 
 function showNoResults() {
     clearRenderer();
@@ -77,49 +72,68 @@ function clearRenderer() {
 function showSearchbarMobile() {
     const searchPromptMenu = document.querySelector("#searchMenuMobile");
     document.addEventListener("pointerdown", (e) => {
-        if (!searchPromptMenu.contains(e.target) && !searchPromptButton.contains(e.target)) {
-            if (e.target == searchPromptButton) {
+        if (!searchPromptMenu.contains(e.target) && !searchPromptButtonMobile.contains(e.target)) {
+            if (e.target == searchPromptButtonMobile) {
                 return;
+            } else if (e.target == createPlaylistButtonMobile) {
+
             } else {
-                searchPromptMenu.classList.add("searchbar--hide");
             }
         } else {
             return;
         }
     });
-    if (!playlistsMobile.classList.contains("playlists--hide")) {
-        playlistsMobile.classList.toggle("playlists--hide");
-        console.log(`Closing playlists and opening searchbar`);
-        console.log(searchPromptMenu);
+    if (!playlistsMobile.classList.contains("playlists--hide-mobile")) {
+        if (!createPlaylistMobileView.classList.contains("playlists--hide-mobile")) {
+            createPlaylistMobileView.classList.add("playlists--hide-mobile");
+            createPlaylistMobileView.inert = true;
+            console.log(`Hiding new playlist form. inert = ${createPlaylistMobileView.inert}`);
+        }
+        playlistsMobile.classList.add("playlists--hide-mobile");
+        playlistsMobile.inert = true;
         // Toggles the class that hides the searchbar
-        searchPromptMenu.classList.toggle("searchbar--hide");
+        searchPromptMenu.classList.remove("searchbar--hide");
+        searchPromptMenu.inert = false;
+        console.log(`Closing playlists and opening searchbar `);
+        console.log(searchPromptMenu.inert);
     } else {
-        console.log(`Opening searchbar`);
-        console.log(searchPromptMenu);
         // Toggles the class that hides the searchbar
         searchPromptMenu.classList.toggle("searchbar--hide");
+        searchPromptMenu.inert = !searchPromptMenu.inert;
+        console.log(searchPromptMenu.inert);
+        console.log(`Toggling searchbar. inert = ${searchPromptMenu.inert}`);
     }
 }
 
 function showPlaylistsMobile() {
-    console.log(`Opening playlists`);
-    playlistsMobile.classList.toggle("playlists--hide");
+    playlistsMobile.classList.remove("playlists--hide-mobile");
+    playlistsMobile.inert = false;
+    console.log(`Toggling playlists view inert = ${playlistsMobile.inert}`);
 }
 
 const playlistContainer = document.querySelectorAll(".playlists__list");
+
 function renderPlaylists(array) {
-    clearPlaylists;
+    clearPlaylists();
     if (array.length == 0) {
         playlistContainer.forEach((playlistNode) => {
-            const noPlaylists = showNoPlaylistsMessage();
-            playlistNode.append(noPlaylists);
+            playlistNode.append(showNoPlaylistsMessage());
         });
     } else {
+        const noPlaylists = document.querySelector(".playlists__no-results");
+        if (noPlaylists) {
+            noPlaylists.remove();
+        }
         playlistContainer.forEach((playlistNode) => {
             for (let i = 0; i < array.length; i++) {
                 const playlist = document.createElement("div");
-                const title = document.createElement("h3");
+                playlist.classList.add("playlists__item");
+                const title = document.createElement("button");
                 title.textContent = array[i].title;
+                title.type = "button";
+                title.addEventListener("click", () => {
+                    console.log(array[i]);
+                });
                 playlist.append(title);
                 playlistNode.append(playlist);
             }
@@ -135,13 +149,9 @@ function showNoPlaylistsMessage() {
 }
 
 function clearPlaylists() {
-    const noResults = document.querySelector("");
+    const noResults = document.querySelector(".playlists__item");
     if (noResults) {
-        console.log("Removing noResults message");
+        console.log("Removing noplaylists message");
         noResults.remove();
     }
 }
-
-// function renderSelectedPlaylist() {
-
-// }

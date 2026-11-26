@@ -28,6 +28,13 @@
             <div class="header-content"></div>
         </header>
         <main>
+            <div class="playlists__creation--desktop playlists--hide-desktop" id="createPlaylistDesktop" inert>
+                    <form id="playlistCreationFormDesktop">
+                        <label for="playlistName">Playlist name</label>
+                        <input type="text" name="playlistName" id="playlistName"/>
+                        <button type="submit" form="playlistCreationFormDesktop" value="Submit">Create</button>
+                    </form>
+                </div>
             <div class="sidebar">
                 <div class="searchbar">
                     <label for="searchInputDesktop">Search for a song</label>
@@ -52,7 +59,6 @@
                     <div class="playlists__list">
                     </div>
                 </div>
-                <div class="playlists__creation playlists--hide" id="createPlaylistDesktop"></div>
             </div>
             <div class="content">
                 <div class="content__results">
@@ -69,12 +75,14 @@
                     <div class="content__results-container"></div>
                     <div class="playlist-selector">
                         <div class="playlist-selector__backdrop"></div>
-                        <div class="playlist-selector__"
-                        <button id="" title="Cancel" aria-label="Cancel adding to playlist action"></button>
+                        <div class="playlist-selector__view">
+                            <div class="playlist-selector__list"></div>
+                            <button id="" title="Cancel" aria-label="Cancel adding to playlist action"></button>
+                        </div>
                     </div>
                 </div>
                 <!-- Playlists for mobile -->
-                <div class="playlists playlists--hide" id="playlistsMobile">
+                <div class="playlists playlists--hide-mobile" id="playlistsMobile" inert>
                     <div class="playlists__container">
                         <div class="playlists__header">
                             <h2>My Playlists</h2>
@@ -86,20 +94,19 @@
                     <div class="playlists__list">
                     </div>
                 </div>
-                <div class="playlists__creation playlists--hide" id="createPlaylistMobile">
-                    <form id="playlistCreationForm" inert>
+                <div class="playlists__creation--mobile playlists--hide-mobile" id="createPlaylistMobile" inert>
+                    <form id="playlistCreationFormMobile">
                         <label for="playlistName">Playlist name</label>
                         <input type="text" name="playlistName" id="playlistName"/>
-                        <button type="submit" form="createPlaylistMobile" value="Submit">Add</button>
+                        <button type="submit" form="playlistCreationFormMobile" value="Submit">Add</button>
                     </form>
                 </div>
-                <div class="searchbar searchbar--hide" id="searchMenuMobile">
+                <div class="searchbar searchbar--hide" id="searchMenuMobile" inert>
                     <input
                         type="text"
                         name="searchInputMobile"
                         id="searchInputMobile"
                         placeholder="Search for title, artist, genre..."
-                        inert
                     />
                 </div>
             </div>
