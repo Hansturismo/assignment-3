@@ -8,7 +8,7 @@ const createPlaylistFormMobile = document.querySelector("#playlistCreationFormMo
 const playlistName = document.querySelector("#playlistName");
 
 // Initialize a playlists array
-const playlistArray = [];
+const playlistArray = JSON.parse(localStorage.getItem("createdPlaylists")) || [];
 
 // Closes the newPlaylistForm if the document is interacted with while it's visible.
 function handlePointerDownMobile(e) {
@@ -27,7 +27,6 @@ function handlePointerDownMobile(e) {
         }
     }
 }
-
 function handlePointerDownDesktop(e) {
     if (!createPlaylistFormDesktop.contains(e.target)) {
         if (e.target == createPlaylistButtonDesktop) {
@@ -64,6 +63,7 @@ function createPlaylist(title) {
     };
     playlistArray.push(playlist);
     console.log(playlistArray);
+    localStorage.setItem("createdPlaylists", JSON.stringify(playlistArray));
     renderPlaylists(playlistArray);
 }
 
@@ -146,7 +146,3 @@ createPlaylistFormMobile.addEventListener("submit", (e) => {
         createPlaylistFormMobile.reset();
     }
 });
-
-const savePlaylist = () => {
-    localStorage.setItem("playlists", playlistArray);
-};

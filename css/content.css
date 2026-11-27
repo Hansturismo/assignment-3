@@ -29,14 +29,16 @@
     padding: 0 1rem;
 }
 
-.content__results-header {
+.content__results-header,
+.playlist-view__header {
     display: grid;
     grid-template-columns: repeat(2, minmax(100px, 1fr)) minmax(50px, 0.5fr) 50px 50px;
     grid-template-rows: 2rem;
     border-bottom: 2px dashed gray;
     padding: 1rem 2rem;
 }
-.content__results-header button:nth-child(4) {
+.content__results-header button:nth-child(4),
+.playlist-view__header button:nth-child(4) {
     justify-self: center;
     /* margin-right: 1.6rem; */
 }
@@ -83,6 +85,46 @@
     height: 100%;
 }
 
+.playlist-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    inset: 0;
+    position: absolute;
+    background-color: var(--content-bg-color);
+    border-radius: 1rem;
+    color: var(--font-color);
+    /* padding: 1rem; */
+}
+
+.playlist-view--hide {
+    display: none;
+}
+
+.playlist-view__title {
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    align-items: left;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.playlist-view__title button {
+    width: 4rem;
+    height: 3rem;
+    font-size: large;
+    align-self: center;
+}
+
+.playlist-view__header {
+}
+
+.playlist-view__tracks {
+    flex: 1 1;
+    padding: 1rem;
+}
+
 #sortByTitle,
 #sortByArtist,
 #sortByGenre {
@@ -102,6 +144,82 @@
     text-align: center;
     justify-self: center;
     max-width: 6rem;
+}
+
+.playlist-selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    color: var(--font-color);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    transition:
+        opacity 0.5s ease,
+        visibility 0s;
+}
+
+.playlist-selector--hide {
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        visibility 0s 0.5s;
+}
+
+.playlist-selector__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: var(--create-playlist-desktop-bg-color);
+    width: 100%;
+    height: 100%;
+}
+
+.playlist-selector__view {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 60%;
+    background-color: var(--content-bg-color);
+    padding: 1rem;
+    z-index: 10;
+    border-radius: 1rem;
+}
+
+.playlist-selector__controls {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    justify-content: space-between;
+    border-bottom: 2px dashed gray;
+    z-index: 12;
+}
+
+.playlist-selector__controls button {
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.playlist-selector__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.playlist-selector__list button {
+    border: none;
+    font-size: var(--font-size-medium);
+    border-radius: 0.5rem;
+    width: 12rem;
+    height: 2rem;
 }
 
 #sortByTitle:active,

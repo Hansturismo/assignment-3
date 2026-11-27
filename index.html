@@ -73,13 +73,37 @@
                         <div></div>
                     </div>
                     <div class="content__results-container"></div>
-                    <div class="playlist-selector">
-                        <div class="playlist-selector__backdrop"></div>
-                        <div class="playlist-selector__view">
-                            <div class="playlist-selector__list"></div>
-                            <button id="" title="Cancel" aria-label="Cancel adding to playlist action"></button>
-                        </div>
+                </div>
+                <div class="playlist-view playlist-view--hide" inert>
+                    <div class="playlist-view__title">
+                        <h2></h2>
+                        <button class="playlist-view__close">Close</button>
                     </div>
+                    <div class="playlist-view__header">
+                        <button id="sortByTitle" title="Click to sort" aria-label="Sort, title">Title</button>
+                        <button id="sortByArtist" title="Click to sort" aria-label="Sort, artist">Artist</button>
+                        <button id="sortByGenre" title="Click to sort" aria-label="Sort, genre">Genre</button>
+                        <button id="sortByDuration">
+                            <img src="./assets/icons/timer-svgrepo-com.svg" class="track__duration--icon"></img>
+                        </button>
+                        <div></div>
+                    </div>
+                    <div class="playlist-view__tracks">
+                        
+                    </div>
+                </div>
+                <div class="playlist-selector playlist-selector--hide">
+                    <div class="playlist-selector__backdrop"></div>
+                    <div class="playlist-selector__view">
+                        <div class="playlist-selector__controls">
+                            <h2>Add to playlist</h2>
+                            <button title="Cancel" aria-label="Cancel adding to playlist action">Cancel</button>
+                        </div>
+                        <div class="playlist-selector__list">
+                            <div>1</div>
+                            <div>2</div>
+                        </div>
+                     </div>
                 </div>
                 <!-- Playlists for mobile -->
                 <div class="playlists playlists--hide-mobile" id="playlistsMobile" inert>
