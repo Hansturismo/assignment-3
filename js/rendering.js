@@ -46,7 +46,6 @@ function renderSearchResults(array) {
         addToPlaylist.addEventListener("click", () => {
             selectedSong = array[i];
             console.log("Selected song:", selectedSong.title);
-
             if (playlistSelector.classList.contains("playlist-selector--hide")) {
                 playlistSelector.classList.remove("playlist-selector--hide");
                 playlistSelector.inert = false;
@@ -216,8 +215,16 @@ function showSelectedPlaylist(playlist) {
         removeFromPlaylist.textContent = "-";
 
         removeFromPlaylist.addEventListener("click", () => {
-            console.log("Remove:", currentSong.id);
+            // This create a new savedSongs array containing every ID
+            // except the song ID of the clicked button
+            playlist.savedSongs = playlist.savedSongs.filter((songId) => {
+                return songId !== currentSong.id;
+            });
+            // save it again
+            localStorage.setItem("createdPlaylists", JSON.stringify(playlistArray));
 
+            // rerender the currently opened playlist
+            showSelectedPlaylist(playlist);
         });
 
         song.append(title, artist, genre, duration, removeFromPlaylist);
@@ -259,6 +266,8 @@ function renderPlaylistSelector(array) {
                 localStorage.setItem("createdPlaylists", JSON.stringify(playlistArray));
             }
             console.log(array[i]);
+            playlistSelector.classList.add("playlist-selector--hide");
+            playlistSelector.inert = true;
         });
         playlist.append(title);
         playlistSelectorList.append(playlist);
